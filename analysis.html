@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>跳转中 · stockpred 完整分析</title>
+<style>
+body{margin:0;background:#f5f6f8;color:#1f2328;
+ font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:64px 20px}
+.card{background:#fff;border:1px solid #dfe3e8;border-radius:12px;padding:22px 24px}
+.muted{color:#6b7280;font-size:13.5px} a{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1 style="font-size:20px;margin:0 0 8px">正在跳转…</h1>
+    <p class="muted">完整分析页在项目站 <code>/stockpred/</code> 下。</p>
+    <p class="muted"><a id="m" href="./stockpred/analysis.html">没有自动跳转就点这里</a></p>
+  </div>
+</div>
+<script>
+/* 承接旧链接 /analysis.html（本地版 web.py 的路由形态）。 */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var m = String(q.get("code") || "").match(/\d{6}/);
+  var target = "./stockpred/analysis.html" + (m ? "?code=" + m[0] : "");
+  document.getElementById("m").setAttribute("href", target);
+  location.replace(target);
+})();
+</script>
+</body>
+</html>
